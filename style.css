@@ -6,11 +6,18 @@
   font-family: "Fraunces-Bold";
   src: url("/Fraunces_72pt-Bold.ttf") format("TrueType");
 }
+@font-face {
+  font-family: "CrimsonText";
+  src: url("/CrimsonText.ttf") format("TrueType");
+}
 
 html,
 body {
-  margin: 0;
+  margin: 0 20px;
   background-color: #453a35;
+}
+canvas.webgl {
+  position: fixed;
 }
 a {
   text-decoration: none;
@@ -19,33 +26,65 @@ div.nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: baseline;
   margin: 20px;
+  margin-top: 0;
 
-  border-bottom: 3px solid rgba(34, 28, 26, 0.2);
+  border-bottom: 5px solid rgba(34, 28, 26, 0.2);
   padding: 16px;
+  padding-bottom: 25px;
   box-sizing: border-box;
 }
 .navList {
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 30px;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 .navList a {
   font-family: "Baskervville";
-  font-size: 25px;
+  font-size: 20px;
   color: hsla(0, 0%, 100%, 0.719);
 }
 .section3 a {
   font-family: "Baskervville";
-  font-size: 25px;
+  font-size: 20px;
   color: hsla(0, 0%, 100%, 0.719);
 }
 .logo {
   font-family: "Fraunces-Bold";
-  font-size: 40px;
+  font-size: 70px;
   font-weight: bold;
   color: #d68c45;
+  margin-left: -50px;
+}
+
+/* maine sectione */
+.mainContainer {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 100px;
+  margin-right: 400px;
+}
+.title {
+  color: #f3f5cc;
+  /* font-size: 60px; */
+  font-size: 3.8vw;
+  font-family: "CrimsonText";
+  text-wrap: auto;
+  margin: 0;
+}
+.title span {
+  color: #d68c45;
+}
+.salesPitch {
+  font-family: "Baskervville";
+  font-size: 20px;
+  color: rgba(243, 245, 204, 65%);
+  max-width: 800px;
+  line-height: 1.8;
 }
