@@ -22,18 +22,27 @@ canvas.webgl {
 a {
   text-decoration: none;
 }
+div.navWrapper {
+  position: fixed;
+  width: 100%;
+  right: 0;
+}
 div.nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin: 20px;
-  margin-top: 0;
 
   border-bottom: 5px solid rgba(34, 28, 26, 0.2);
-  padding: 16px;
-  padding-bottom: 25px;
+  padding: 16px 70px;
   box-sizing: border-box;
+
+  border-radius: 45px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.2px);
+  -webkit-backdrop-filter: blur(6.2px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 .navList {
   display: flex;
@@ -58,18 +67,18 @@ div.nav {
   font-size: 70px;
   font-weight: bold;
   color: #d68c45;
-  margin-left: -50px;
 }
 
 /* maine sectione */
 .mainContainer {
-  height: 75vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-left: 100px;
   margin-right: 400px;
 }
+
 .title {
   color: #f3f5cc;
   /* font-size: 60px; */
@@ -87,4 +96,35 @@ div.nav {
   color: rgba(243, 245, 204, 65%);
   max-width: 800px;
   line-height: 1.8;
+}
+
+/* packages section */
+.secondContainer {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 200px;
+  margin-top: 50px;
+}
+.packages {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.package {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.priceTag {
+  font-family: "Baskervville";
+  color: #f3f5cc;
+}
+
+/* last section */
+.thirdContainer {
+  height: 85vh;
 }
