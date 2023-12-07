@@ -18,6 +18,7 @@ body {
 }
 canvas.webgl {
   position: fixed;
+  left: 0;
 }
 a {
   text-decoration: none;
