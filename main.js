@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 /*
@@ -7,6 +8,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
  */
 const canvas = document.querySelector("canvas.webgl");
 const gltfLoader = new GLTFLoader();
+const objLoader = new OBJLoader();
 
 /*
  * scene setup
@@ -36,6 +38,34 @@ scene.add(cameraGroup);
  * OBjects
  */
 const objectPosition = 4;
+
+const textureLoader = new THREE.TextureLoader();
+
+let beansPackage,
+  beansPackage1 = undefined,
+  beansPackage2 = undefined,
+  beansPackage3 = undefined;
+objLoader.load("/Paper_Pack_2.obj", (obj) => {
+  const beansPackageGeometry = obj.children[0].geometry;
+  const cardboardMatcap = textureLoader.load("/cardboard.png");
+  const cardboardMaterial = new THREE.MeshMatcapMaterial();
+  cardboardMatcap.colorSpace = THREE.SRGBColorSpace;
+  cardboardMaterial.matcap = cardboardMatcap;
+
+  beansPackage = new THREE.Mesh(beansPackageGeometry, cardboardMaterial);
+  beansPackage.position.y = -objectPosition - 0.5;
+  beansPackage.scale.setScalar(0.05);
+
+  beansPackage1 = beansPackage.clone();
+  beansPackage2 = beansPackage.clone();
+  beansPackage3 = beansPackage.clone();
+  beansPackage1.position.x = marimi.width / marimi.scaleForThree;
+  beansPackage3.position.x = -marimi.width / marimi.scaleForThree;
+
+  scene.add(beansPackage1, beansPackage2, beansPackage3);
+  // scene.add(beansPackage);
+});
+
 let cup = undefined;
 gltfLoader.load("/onlinePahar.glb", (gltf) => {
   cup = gltf.scene;
@@ -47,23 +77,19 @@ gltfLoader.load("/onlinePahar.glb", (gltf) => {
 
   scene.add(cup);
 });
-let beansPackage,
-  beansPackage1 = undefined,
-  beansPackage2 = undefined,
-  beansPackage3 = undefined;
 
-gltfLoader.load("/package.glb", (gltf) => {
-  beansPackage = gltf.scene;
-  beansPackage.position.y = -objectPosition - 0.5;
+// gltfLoader.load("/package.glb", (gltf) => {
+//   beansPackage = gltf.scene;
+//   beansPackage.position.y = -objectPosition - 0.5;
 
-  beansPackage1 = beansPackage.clone();
-  beansPackage2 = beansPackage.clone();
-  beansPackage3 = beansPackage.clone();
-  beansPackage1.position.x = marimi.width / marimi.scaleForThree;
-  beansPackage3.position.x = -marimi.width / marimi.scaleForThree;
+//   beansPackage1 = beansPackage.clone();
+//   beansPackage2 = beansPackage.clone();
+//   beansPackage3 = beansPackage.clone();
+//   beansPackage1.position.x = marimi.width / marimi.scaleForThree;
+//   beansPackage3.position.x = -marimi.width / marimi.scaleForThree;
 
-  scene.add(beansPackage1, beansPackage2, beansPackage3);
-});
+//   // scene.add(beansPackage1, beansPackage2, beansPackage3);
+// });
 
 //lights
 const light1 = new THREE.AmbientLight("white", 1);
